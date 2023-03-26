@@ -22,15 +22,18 @@ import pandas as pd  # read csv, df manipulation
 import plotly.express as px  # interactive charts
 import streamlit as st  # 🎈 data web app development
 
+url_icon = "https://drive.google.com/file/d/1rsobE8pEosOFjGyihHg6tN1oiqZQmwUV/view?usp=sharing"
+icon = st.image('https://drive.google.com/uc?export=download&id='+url_icon.split('/')[-2])
+
 st.set_page_config(
     page_title="Classement Concours Moovjee",
-    page_icon="https://drive.google.com/file/d/1rsobE8pEosOFjGyihHg6tN1oiqZQmwUV/view?usp=sharing",
+    page_icon=icon,
     layout="wide",
 )
 
 st.title("Moovjee Challenge Ranking x Plenumi")
 
-url = "https://drive.google.com/file/d/1-CCStuyCsNMacsn040SYS4JJwHIHtegA/view?usp=sharing"
+url = "https://drive.google.com/file/d/1-FuA4hHpyvghqeF2r0sBhJDJSwwWepvM/view?usp=sharing"
 path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
 
 
