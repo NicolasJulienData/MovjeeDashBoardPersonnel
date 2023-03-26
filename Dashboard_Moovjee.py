@@ -98,7 +98,7 @@ with col4:
 
 st.markdown("### Details")
 fig = px.line(data.sort_values(by=['likes'], ascending = False), x="date", y="likes", color="title", hover_data=['title','likes','views','description'], range_x=[-1,20], 
-              title = 'Suivi général du nombre de Likes', log_y=True, height=800, width = 1200, labels={'title':'Projet', 'likes':"Number of Likes"}, markers = True)
+              title = 'Suivi général du nombre de Likes', log_y=True, height=800, width = 1200, labels={'title':'Projet', 'likes':"Number of Likes"}, markers = True, category_orders={'date':data.sort_values(by=['date'], ascending = False)['date']})
 st.write(fig)
     
 
