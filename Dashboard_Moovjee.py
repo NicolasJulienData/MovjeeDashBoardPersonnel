@@ -88,7 +88,7 @@ with col3:
     st.video("https://www.youtube.com/watch?v=O5xTOPv5Dr0")
                 
 with col4:
-    st.markdown("### **A propos de Plenumi : ** ###) 
+    st.markdown("### **A propos de Plenumi : ** ###") 
     st.markdown("*Pourquoi ce Dashboard ?* - Nous te partageons ce Dashboard afin de te montrer que **les données peuvent aider à gagner en motivation et encourager la mise en action**. 💪 Nous pensons que pouvoir analyser et comparer les performances des projets aidera la communauté Moovjee à se mobiliser et permettra de faire grandir l'engouement autour du concours 🚀. Mais nous pensons également que **se servir des données pour générer un impact positif** est possible dans pleins d'autres cadres, notamment celui de **l'éducation**, afin de motiver non pas des porteurs de projets mais des élèves 🎓.")
     st.markdown("*C'est quoi Plenumi ?* - **Plenumi** est une plateforme de révisions en ligne qui utilise les différentes avancées en innovation pédagogique ainsi qu’en *data science* pour **fournir un suivi personnalisé et qualitatif à chaque élève**🎓.  En centralisant le travail et les données de l’élève, il est possible d’activer des **leviers de progression**, lui permettant d'avoir un apprentissage **pertinent, ludique et motivant**📚.")
     st.markdown("**Suivre le projet :** https://plenumi.fr")
