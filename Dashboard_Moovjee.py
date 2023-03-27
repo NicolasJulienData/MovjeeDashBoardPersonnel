@@ -35,6 +35,12 @@ st.title("Moovjee Challenge Ranking x Plenumi")
 
 url = "https://drive.google.com/file/d/1BDCO-9eYCRHnZMi9AK2PBD-Y3ZoDWwKm/view?usp=sharing"
 path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
+
+import urllib.request
+req = Request(path, headers={'User-Agent': 'XYZ/3.0'})
+content = urlopen(req, timeout=10).read()
+data = pd.read_csv(content)
+
 data = pd.read_csv(path)
 
 today = datetime.now().strftime("%m-%d")
@@ -52,7 +58,6 @@ for date in data['date'].unique():
     data_jour = data[data['date'] == date]
     classement_jour = data_jour.sort_values(by=['likes'], ascending = False)[['title', 'likes','views']].reset_index()
     histo_classement.append(int(classement_jour[classement_jour['title']=='PLENUMI (22)'].index[0]))
-
 
 url_image = "https://drive.google.com/file/d/13olHPYQsb4r3cF6x-r1vefCCFNPYKLfg/view?usp=sharing"
 st.image('https://drive.google.com/uc?export=download&id='+url_image.split('/')[-2])
