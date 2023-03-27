@@ -39,6 +39,9 @@ path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
 data = pd.read_csv(path)
 
 today = datetime.now().strftime("%m-%d")
+if today not in data['date']:
+    today = (datetime.now() - timedelta(days = 1)).strftime("%m-%d")
+    
 data_today = data[data['date'] == today]
 data_Plenumi = data[data['title'] == 'PLENUMI (22)']
 top_50 = data_today.sort_values(by=['likes'], ascending = False)[['title', 'likes']][0:50]
@@ -54,8 +57,6 @@ for date in data['date'].unique():
 
 url_image = "https://drive.google.com/file/d/13olHPYQsb4r3cF6x-r1vefCCFNPYKLfg/view?usp=sharing"
 st.image('https://drive.google.com/uc?export=download&id='+url_image.split('/')[-2])
-
-st.write(classement_Plenumi)
 
 col1, col2 = st.columns(2)
 
