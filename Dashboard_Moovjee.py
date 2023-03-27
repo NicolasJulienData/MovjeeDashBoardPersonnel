@@ -42,9 +42,8 @@ from io import StringIO
 import pandas as pd
 import requests
 
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
-content=requests.get(path, headers= headers)
-data_test = urlopen(content,timeout=10).read()
+req = Request('http://www.cmegroup.com/', headers={'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'})
+data_test = urlopen(req,timeout=10).read()
 pd.read_csv(data_test)
 data = pd.read_csv(path)
 
