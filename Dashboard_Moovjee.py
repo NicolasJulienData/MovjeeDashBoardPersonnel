@@ -15,6 +15,7 @@ import json as json
 from requests_html import HTMLSession 
 from stqdm import stqdm
 from datetime import datetime
+from datetime import timedelta
 from io import BytesIO
 
 import numpy as np  # np mean, np random
