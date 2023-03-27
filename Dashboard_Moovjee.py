@@ -78,7 +78,7 @@ col3, col_vide, col4 = st.columns([3,1,8])
 with col3:
     url_image = "https://drive.google.com/file/d/13olHPYQsb4r3cF6x-r1vefCCFNPYKLfg/view?usp=sharing"
     st.image('https://drive.google.com/uc?export=download&id='+url_image.split('/')[-2], width = 300)
-    st.markdown("Si vous aimez ce Dashboard et le projet Plenumi, n'oubliez pas d'aller liker notre vidéo pour nous soutenir 👍 ! ** Merci pour votre soutien ❤️ **")
+    st.markdown("Si vous aimez ce Dashboard et le projet Plenumi, n'oubliez pas d'aller liker notre vidéo pour nous soutenir 👍 ! ** Merci pour votre soutien **❤️")
     st.video("https://www.youtube.com/watch?v=O5xTOPv5Dr0")
                 
 with col4:
@@ -93,7 +93,8 @@ projet = 'PLENUMI (22)'
 col5, col6, col7 = st.columns(3)
 with col6:
     st.markdown("### - Suivre mon projet -") 
-    projet = st.selectbox('Nom du projet:', np.sort(data['title'].unique()), index=np.where(np.sort(data['title'].unique())=='PLENUMI (22)')[0])
+    st.write(index=np.where(np.sort(data['title'].unique())=='PLENUMI (22)'))
+    projet = st.selectbox('Nom du projet:', np.sort(data['title'].unique()), index=np.where(np.sort(data['title'].unique())=='PLENUMI (22)'))
     
 classement_projet = classement[classement['title']==projet]
 
