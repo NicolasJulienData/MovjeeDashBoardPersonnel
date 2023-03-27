@@ -77,8 +77,8 @@ col3, col_vide, col4 = st.columns([3,1,8])
 
 with col3:
     url_image = "https://drive.google.com/file/d/13olHPYQsb4r3cF6x-r1vefCCFNPYKLfg/view?usp=sharing"
-    st.image('https://drive.google.com/uc?export=download&id='+url_image.split('/')[-2], width = 300)
-    st.markdown("Si vous aimez ce Dashboard et le projet Plenumi, n'oubliez pas d'aller liker notre vidéo pour nous soutenir 👍 ! ** Merci pour votre soutien **❤️")
+    st.image('https://drive.google.com/uc?export=download&id='+url_image.split('/')[-2], width = 270)
+    st.markdown("Si vous aimez ce Dashboard et le projet Plenumi, n'oubliez pas d'aller liker notre vidéo pour nous soutenir 👍 ! Merci pour votre soutien ❤️")
     st.video("https://www.youtube.com/watch?v=O5xTOPv5Dr0")
                 
 with col4:
@@ -110,7 +110,6 @@ with col8:
     st.write('Projet sélectionné :',projet)
     st.markdown("#### Classement:")
     st.write(classement_projet.index[0], " /190")
-    st.write(histo_classement)
     diff_hier = histo_classement[-2]-histo_classement[-1]
     if diff_hier >= 0:
         st.write("(+",diff_hier," places gagnées par rapport à hier)")
@@ -124,13 +123,13 @@ with col8:
 with col9:
     comparatifs = data_today.sort_values(by=['likes'], ascending = False).iloc[[0,9,19,49,99,(classement[classement['title']==projet].index[0])]]['title']
     data_special_projet_Chart = data[(data['title'].isin(comparatifs))]
-    data_special_projet_Chart['Autre'] = data_special_projet_Chart['title'].apply(lambda x: x[:-2] if x == projet else 'Other')
+    data_special_projet_Chart['Autre'] = data_special_projet_Chart['title'].apply(lambda x: x[:-5] if x == projet else 'Other')
     rankings = []
     for entreprise in data_special_projet_Chart['title']:
       rankings.append(('Top '+str(classement[classement['title']==entreprise].index[0]+1)))
     data_special_projet_Chart['rankings']=rankings
     fig_projet = px.line(data_special_projet_Chart.sort_values(by=['likes'], ascending = False), x="date", y="likes", symbol = 'rankings' ,color="Autre", hover_data=['title','likes','views','description'], range_x=[-1,20], 
-              title = 'Classement de Likes - Mon Projet VS les autres', log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_sequence=['#A9A9A9','#5F9EA0'], 
+              title = 'Classement de Likes - {Mon Projet} VS les autres'.format(projet), log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_sequence=['#A9A9A9','#5F9EA0'], 
                          category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
     st.write(fig_projet)
 
