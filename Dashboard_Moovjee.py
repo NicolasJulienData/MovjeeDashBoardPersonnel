@@ -77,7 +77,7 @@ col3, col_vide, col4 = st.columns([3,1,8])
 
 with col3:
     url_image = "https://drive.google.com/file/d/13olHPYQsb4r3cF6x-r1vefCCFNPYKLfg/view?usp=sharing"
-    st.image('https://drive.google.com/uc?export=download&id='+url_image.split('/')[-2], width = 250)
+    st.image('https://drive.google.com/uc?export=download&id='+url_image.split('/')[-2], width = 300)
     st.markdown("Si vous aimez ce Dashboard et le projet Plenumi, n'oubliez pas d'aller liker notre vidéo pour nous soutenir 👍 ! ** Merci pour votre soutien ❤️ **")
     st.video("https://www.youtube.com/watch?v=O5xTOPv5Dr0")
                 
