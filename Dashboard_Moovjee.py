@@ -116,7 +116,7 @@ with col8:
         st.write(-diff_hier," places perdues par rapport à hier")
     st.markdown("#### Nombre de likes:")
     st.write(int(classement_projet['likes']))
-    st.write(top_10_likes-int(classement_projet['likes'])," likes manquants pour être qualifié)
+    st.write(top_10_likes-int(classement_projet['likes'])," likes manquants pour être qualifié")
     st.markdown("#### Nombre de vues:")
     st.write(int(classement_projet['views']))
 
