@@ -33,7 +33,7 @@ st.set_page_config(
 
 st.title("Concours Prix Moovjee 100 Jours - Suivi du classement     (Réalisé par @Plenumi)")
 
-url = "https://drive.google.com/file/d/1BDCO-9eYCRHnZMi9AK2PBD-Y3ZoDWwKm/view?usp=sharing"
+url = "https://drive.google.com/file/d/1-FuA4hHpyvghqeF2r0sBhJDJSwwWepvM/view?usp=sharing"
 path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
 
 import urllib.request
@@ -61,21 +61,51 @@ for date in data['date'].unique():
     data_jour = data[data['date'] == date]
     classement_jour = data_jour.sort_values(by=['likes'], ascending = False)[['title', 'likes','views']].reset_index()
     histo_classement.append(int(classement_jour[classement_jour['title']=='PLENUMI (22)'].index[0]))
-st.write(histo_classement)
 
-url_image = "https://drive.google.com/file/d/13olHPYQsb4r3cF6x-r1vefCCFNPYKLfg/view?usp=sharing"
-st.image('https://drive.google.com/uc?export=download&id='+url_image.split('/')[-2], width = 200)
-
-col1, col2 = st.columns(2)
-
+col1, col2 = st.columns([6,1])  
+with col2:
+    st.markdown("### **A propos du Dashboard : ** ###)
+    st.markdown("Bienvenue à toi sur ce Dashboard de suivi du classement du **prix 100 jours de Moovjee** 🏆. Que tu sois porteur de projet, soutien actif ou simple curieux, ce Dashboard te permettra de suivre les performances des projets qui t'intéressent. 📊")
+    st.markdown("⚠️ Attention : Les données sont actualisées **manuellement** tous les jours à 12h 🕛, par conséquent les **performances affichées ne sont pas les performances en temps réel**. Pour toute suggestion, remarque, problème, question, n'hésite pas à me contacter : nicolas.julien@essec.edu")
 with col1:
+    from streamlit_lottie import st_lottie
+    from streamlit_lottie import st_lottie_spinner
+    def load_lottieurl(url: str):
+        r = requests.get(url)
+        if r.status_code != 200:
+            return None
+        return r.json()
+    lottie_url_download = "https://assets8.lottiefiles.com/packages/lf20_cv6rdeii.json"
+    lottie_download = load_lottieurl(lottie_url_download)
+    st_lottie(lottie_download)
+    
+col3, col4 = st.columns([2,6])
+
+with col3:
+    url_image = "https://drive.google.com/file/d/13olHPYQsb4r3cF6x-r1vefCCFNPYKLfg/view?usp=sharing"
+    st.image('https://drive.google.com/uc?export=download&id='+url_image.split('/')[-2], width = 200)
+    st.markdown("** Si vous aimez ce Dashboard et le projet Plenumi, n'oubliez pas d'aller liker notre vidéo pour nous soutenir 👍 ! Merci pour votre soutien ❤️ **")
+    st.video("https://www.youtube.com/watch?v=O5xTOPv5Dr0")
+                
+with col4:
+    st.markdown("### **A propos de Plenumi : ** ###) 
+    st.markdown("*Pourquoi ce Dashboard ?* - Nous te partageons ce Dashboard afin de te montrer que **les données peuvent aider à gagner en motivation et encourager la mise en action**. 💪 Nous pensons que pouvoir analyser et comparer les performances des projets aidera la communauté Moovjee à se mobiliser et permettra de faire grandir l'engouement autour du concours 🚀. Mais nous pensons également que **se servir des données pour générer un impact positif** est possible dans pleins d'autres cadres, notamment celui de **l'éducation**, afin de motiver non pas des porteurs de projets mais des élèves 🎓.")
+    st.markdown("*C'est quoi Plenumi ?* - **Plenumi** est une plateforme de révisions en ligne qui utilise les différentes avancées en innovation pédagogique ainsi qu’en *data science* pour **fournir un suivi personnalisé et qualitatif à chaque élève**🎓.  En centralisant le travail et les données de l’élève, il est possible d’activer des **leviers de progression**, lui permettant d'avoir un apprentissage **pertinent, ludique et motivant**📚.")
+    st.markdown("**Suivre le projet :** https://plenumi.fr")
+    st.markdown("**Nous contacter :** contact@plenumi.fr")           
+                
+st.markdown("### Suivre mon projet:")       
+        
+col5, col6 = st.columns(2)
+
+with col5:
     st.markdown("#### Classement de Plenumi:")
     st.write(classement_Plenumi.index[0], " /190")
     diff_hier = histo_classement[-2]-histo_classement[-1]
     if diff_hier >= 0:
         st.write("(+",diff_hier," places gagnées par rapport à hier)")
     else:
-        st.write(diff_hier," places perdues par rapport à hier)")
+        st.write(-diff_hier," places perdues par rapport à hier)")
     st.markdown("#### Nombre de likes:")
     st.write(int(classement_Plenumi['likes']))
     st.markdown("#### Nombre de vues:")
@@ -84,7 +114,7 @@ with col1:
     st.markdown("## N'oubliez pas d'aller liker la vidéo !! 👍")
     
     
-with col2: st.video("https://www.youtube.com/watch?v=O5xTOPv5Dr0")
+with col6: st.video("https://www.youtube.com/watch?v=O5xTOPv5Dr0")
 
 col3, col_vide, col4 = st.columns([10,2,5])
 
@@ -98,7 +128,8 @@ with col3:
       rankings.append(('Top '+str(classement[classement['title']==entreprise].index[0]+1)))
     data_special_Plenum_Chart['rankings']=rankings
     fig_Plenumi = px.line(data_special_Plenum_Chart.sort_values(by=['likes'], ascending = False), x="date", y="likes", symbol = 'rankings' ,color="Autre", hover_data=['title','likes','views','description'], range_x=[-1,20], 
-              title = 'Classement de Likes - Plenumi VS les autres', log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_sequence=['#A9A9A9','#5F9EA0'])
+              title = 'Classement de Likes - Plenumi VS les autres', log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_sequence=['#A9A9A9','#5F9EA0'], 
+                         category_orders={'date':data.sort_values(by=['date'], ascending = True)['date'])
     st.write(fig_Plenumi)
     
 
