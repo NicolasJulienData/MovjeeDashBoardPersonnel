@@ -50,7 +50,7 @@ for date in data['date'].unique():
     data_jour = data[data['date'] == date]
     classement_jour = data_jour.sort_values(by=['likes'], ascending = False)[['title', 'likes','views']].reset_index()
     st.write(classement_jour[classement_jour['title']=='PLENUMI (22)'].index)
-    histo_classement.append(classement_jour[classement_jour['title']=='PLENUMI (22)'].index[0])
+    histo_classement.append(int(classement_jour[classement_jour['title']=='PLENUMI (22)'].index[0]))
 
 
 url_image = "https://drive.google.com/file/d/13olHPYQsb4r3cF6x-r1vefCCFNPYKLfg/view?usp=sharing"
