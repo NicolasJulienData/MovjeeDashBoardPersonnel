@@ -37,6 +37,8 @@ url = "https://drive.google.com/file/d/1BDCO-9eYCRHnZMi9AK2PBD-Y3ZoDWwKm/view?us
 path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
 
 import urllib.request
+from urllib.request import Request, urlopen
+
 req = Request(path, headers={'User-Agent': 'XYZ/3.0'})
 content = urlopen(req, timeout=10).read()
 data = pd.read_csv(content)
