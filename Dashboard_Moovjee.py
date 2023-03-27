@@ -26,12 +26,12 @@ import streamlit as st  # 🎈 data web app development
 url_icon = "https://drive.google.com/file/d/1rsobE8pEosOFjGyihHg6tN1oiqZQmwUV/view?usp=sharing"
 
 st.set_page_config(
-    page_title="Concours Moovjee Prix 100 Jours - Suivi du classement",
+    page_title="Concours Moovjee Prix 100 jours - Suivi du Classement",
     page_icon='https://drive.google.com/uc?export=download&id='+url_icon.split('/')[-2],
     layout="wide",
 )
 
-st.title("Concours Prix Moovjee 100 Jours - Suivi du classement (Réalisé par @Plenumi)")
+st.title("Concours Prix Moovjee 100 Jours - Suivi du classement     (Réalisé par @Plenumi)")
 
 url = "https://drive.google.com/file/d/1BDCO-9eYCRHnZMi9AK2PBD-Y3ZoDWwKm/view?usp=sharing"
 path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
@@ -71,7 +71,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown("#### Classement de Plenumi:")
     st.write(classement_Plenumi.index[0], " /190")
-    diff_hier = histo_classement[-1]-classement_Plenumi.index[0]
+    diff_hier = histo_classement[-1]-histo_classement[0]
     if diff_hier >= 0:
         st.write("(+",diff_hier," places gagnées par rapport à hier)")
     else:
