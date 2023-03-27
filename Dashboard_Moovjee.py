@@ -93,7 +93,7 @@ projet = 'PLENUMI (22)'
 col5, col6, col7 = st.columns(3)
 with col6:
     st.markdown("### - Suivre mon projet -") 
-    projet = st.selectbox('Nom du projet:', data['title'].unique())
+    projet = st.selectbox('Nom du projet:', np.sort(data['title'].unique()), index=np.where(np.sort(data['title'].unique())=='PLENUMI (22)')
     
 classement_projet = classement[classement['title']==projet]
 
@@ -103,7 +103,7 @@ for date in data['date'].unique():
     classement_jour = data_jour.sort_values(by=['likes'], ascending = False)[['title', 'likes','views']].reset_index()
     histo_classement.append(int(classement_jour[classement_jour['title']==projet].index[0]))   
              
-col8, col9 = st.columns(2)
+col8, col9 = st.columns([1,3])
 
 with col8:
     st.write('Projet sélectionné :',projet)
@@ -136,7 +136,7 @@ with col9:
     
 col10, col11, col12 = st.columns(3)
 with col11:
-    st.markdown("### - Suivre mon projet -") 
+    st.markdown("### - Classement Général -") 
     top = st.slider("Afficher le Top...", min_value=0, max_value=190, value=50) 
     
 col13, col14 = st.columns([3,1])
@@ -146,7 +146,7 @@ with col13:
     st.write(top.reset_index(drop=True))
   
 with col14:
-    fig = px.line(data.sort_values(by=['likes'], ascending = False)[0:top+1], x="date", y="likes", color="title", hover_data=['title','likes','views','description'], range_x=[-1,20], 
+    fig = px.line(data.sort_values(by=['likes'], ascending = False).iloc[0:top+1], x="date", y="likes", color="title", hover_data=['title','likes','views','description'], range_x=[-1,20], 
               title = 'Suivi général du nombre de Likes', log_y=True, height=800, width = 1200, labels={'title':'Projet', 'likes':"Number of Likes"}, markers = True, category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
     st.write(fig)
 
