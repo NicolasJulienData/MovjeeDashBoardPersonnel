@@ -38,11 +38,13 @@ path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
 
 import urllib.request
 from urllib.request import Request, urlopen
+from io import StringIO
+import pandas as pd
+import requests
 
-req = Request(path, headers={'User-Agent': 'XYZ/3.0'})
-content = urlopen(req, timeout=10).read()
-data = pd.read_csv(content)
-
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
+content=requests.get(path, headers= headers)
+pd.read_csv(content)
 data = pd.read_csv(path)
 
 today = datetime.now().strftime("%m-%d")
