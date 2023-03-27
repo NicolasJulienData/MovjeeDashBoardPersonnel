@@ -33,20 +33,8 @@ st.set_page_config(
 
 st.title("Moovjee Challenge Ranking x Plenumi")
 
-url = "https://drive.google.com/file/d/1-FuA4hHpyvghqeF2r0sBhJDJSwwWepvM/view?usp=sharing"
+url = "https://drive.google.com/file/d/1BDCO-9eYCRHnZMi9AK2PBD-Y3ZoDWwKm/view?usp=sharing"
 path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
-
-try:
-    from urllib.request import Request, urlopen  # Python 3
-except ImportError:
-    from urllib2 import Request, urlopen  # Python 2
-
-req = Request(path)
-req.add_header('User-Agent', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:77.0) Gecko/20100101 Firefox/77.0')
-content = urlopen(req)
-
-data = pd.read_csv(content)
-st.write(data)
 data = pd.read_csv(path)
 
 today = datetime.now().strftime("%m-%d")
