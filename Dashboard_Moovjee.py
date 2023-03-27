@@ -129,7 +129,7 @@ with col3:
     data_special_Plenum_Chart['rankings']=rankings
     fig_Plenumi = px.line(data_special_Plenum_Chart.sort_values(by=['likes'], ascending = False), x="date", y="likes", symbol = 'rankings' ,color="Autre", hover_data=['title','likes','views','description'], range_x=[-1,20], 
               title = 'Classement de Likes - Plenumi VS les autres', log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_sequence=['#A9A9A9','#5F9EA0'], 
-                         category_orders={'date':data.sort_values(by=['date'], ascending = True)['date'])
+                         category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
     st.write(fig_Plenumi)
     
 
