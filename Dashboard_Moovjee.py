@@ -139,7 +139,7 @@ with col11:
     st.markdown("### - Classement Général -") 
     top = st.slider("Afficher le Top...", min_value=0, max_value=190, value=50) 
     
-col13, col14 = st.columns([3,1])
+col13, col14 = st.columns([1,3])
 with col13:
     top_data = data_today.sort_values(by=['likes'], ascending = False)[['title', 'likes']][0:top+1]
     st.markdown("**Classement Général**")
