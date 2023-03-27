@@ -48,9 +48,8 @@ classement_Plenumi = classement[classement['title']=='PLENUMI (22)']
 histo_classement = []
 for date in data['date'].unique():
     data_jour = data[data['date'] == date]
-    st.write(data_jour)
     classement_jour = data_jour.sort_values(by=['likes'], ascending = False)[['title', 'likes','views']].reset_index()
-    st.write(classement_jour)
+    st.write(classement_jour[classement_jour['title']=='PLENUMI (22)'].index)
     histo_classement.append(classement_jour[classement_jour['title']=='PLENUMI (22)'].index[0])
 
 
