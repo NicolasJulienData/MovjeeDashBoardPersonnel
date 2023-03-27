@@ -107,7 +107,6 @@ for date in data['date'].unique():
 col8, col9 = st.columns([1,3])
 
 with col8:
-    st.write('Projet sélectionné :',projet)
     st.markdown("#### Classement:")
     st.write(classement_projet.index[0], " /190")
     diff_hier = histo_classement[-2]-histo_classement[-1]
