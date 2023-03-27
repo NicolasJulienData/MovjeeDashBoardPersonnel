@@ -71,7 +71,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown("#### Classement de Plenumi:")
     st.write(classement_Plenumi.index[0], " /190")
-    diff_hier = histo_classement[-1]-histo_classement[0]
+    diff_hier = histo_classement[-1]-histo_classement[-2]
     if diff_hier >= 0:
         st.write("(+",diff_hier," places gagnées par rapport à hier)")
     else:
