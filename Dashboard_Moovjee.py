@@ -42,9 +42,8 @@ from io import StringIO
 import pandas as pd
 import requests
 
-req = Request('http://www.cmegroup.com/', headers={'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'})
-data_test = urlopen(req).read()
-pd.read_csv(data_test)
+storage_options = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
+pd.read_csv(path, storage_options=storage_options))
 data = pd.read_csv(path)
 
 today = datetime.now().strftime("%m-%d")
