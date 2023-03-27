@@ -49,12 +49,13 @@ histo_classement = []
 for date in data['date'].unique():
     data_jour = data[data['date'] == date]
     classement_jour = data_jour.sort_values(by=['likes'], ascending = False)[['title', 'likes','views']].reset_index()
-    st.write(classement_jour[classement_jour['title']=='PLENUMI (22)'].index[0])
     histo_classement.append(int(classement_jour[classement_jour['title']=='PLENUMI (22)'].index[0]))
 
 
 url_image = "https://drive.google.com/file/d/13olHPYQsb4r3cF6x-r1vefCCFNPYKLfg/view?usp=sharing"
 st.image('https://drive.google.com/uc?export=download&id='+url_image.split('/')[-2])
+
+st.write(classement_Plenumi)
 
 col1, col2 = st.columns(2)
 
