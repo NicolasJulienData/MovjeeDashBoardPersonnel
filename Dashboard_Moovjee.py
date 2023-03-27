@@ -44,7 +44,8 @@ import requests
 
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
 content=requests.get(path, headers= headers)
-pd.read_csv(content)
+data_test = urlopen(req,timeout=10).read()
+pd.read_csv(data_test)
 data = pd.read_csv(path)
 
 today = datetime.now().strftime("%m-%d")
