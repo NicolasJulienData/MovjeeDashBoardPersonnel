@@ -49,6 +49,7 @@ histo_classement = []
 for date in data['date'].unique():
     data_jour = data_today = data[data['date'] == today]
     classement_jour = data_jour.sort_values(by=['likes'], ascending = False)[['title', 'likes','views']].reset_index()
+    st.write(classement_jour[classement_jour['title']=='PLENUMI (22)'].index)
     histo_classement.append(classement_jour[classement_jour['title']=='PLENUMI (22)'].index[0])
 
 
