@@ -62,7 +62,7 @@ for date in data['date'].unique():
     classement_jour = data_jour.sort_values(by=['likes'], ascending = False)[['title', 'likes','views']].reset_index()
     histo_classement.append(int(classement_jour[classement_jour['title']=='PLENUMI (22)'].index[0]))
 
-col1, col2 = st.columns([6,1])  
+col1, col2 = st.columns([1,6])  
 with col2:
     st.markdown("### **A propos du Dashboard : ** ###")
     st.markdown("Bienvenue à toi sur ce Dashboard de suivi du classement du **prix 100 jours de Moovjee** 🏆. Que tu sois porteur de projet, soutien actif ou simple curieux, ce Dashboard te permettra de suivre les performances des projets qui t'intéressent. 📊")
