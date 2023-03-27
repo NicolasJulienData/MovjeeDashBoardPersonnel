@@ -26,12 +26,12 @@ import streamlit as st  # 🎈 data web app development
 url_icon = "https://drive.google.com/file/d/1rsobE8pEosOFjGyihHg6tN1oiqZQmwUV/view?usp=sharing"
 
 st.set_page_config(
-    page_title="Classement Concours Moovjee",
+    page_title="Concours Moovjee Prix 100 Jours - Suivi du classement",
     page_icon='https://drive.google.com/uc?export=download&id='+url_icon.split('/')[-2],
     layout="wide",
 )
 
-st.title("Moovjee Challenge Ranking x Plenumi")
+st.title("Concours Prix Moovjee 100 Jours - Suivi du classement (Réalisé par @Plenumi)")
 
 url = "https://drive.google.com/file/d/1BDCO-9eYCRHnZMi9AK2PBD-Y3ZoDWwKm/view?usp=sharing"
 path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
@@ -61,9 +61,10 @@ for date in data['date'].unique():
     data_jour = data[data['date'] == date]
     classement_jour = data_jour.sort_values(by=['likes'], ascending = False)[['title', 'likes','views']].reset_index()
     histo_classement.append(int(classement_jour[classement_jour['title']=='PLENUMI (22)'].index[0]))
+st.write(histo_classement)
 
 url_image = "https://drive.google.com/file/d/13olHPYQsb4r3cF6x-r1vefCCFNPYKLfg/view?usp=sharing"
-st.image('https://drive.google.com/uc?export=download&id='+url_image.split('/')[-2])
+st.image('https://drive.google.com/uc?export=download&id='+url_image.split('/')[-2], width = 200)
 
 col1, col2 = st.columns(2)
 
