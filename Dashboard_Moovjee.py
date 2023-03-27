@@ -35,8 +35,6 @@ st.title("Moovjee Challenge Ranking x Plenumi")
 
 url = "https://drive.google.com/file/d/1-FuA4hHpyvghqeF2r0sBhJDJSwwWepvM/view?usp=sharing"
 path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
-
-
 data = pd.read_csv(path)
 
 today = datetime.now().strftime("%m-%d")
