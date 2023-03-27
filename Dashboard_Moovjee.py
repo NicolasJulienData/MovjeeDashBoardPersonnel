@@ -147,7 +147,7 @@ with col13:
   
 with col14:
     fig = px.line(data.sort_values(by=['likes'], ascending = False).iloc[0:top+1], x="date", y="likes", color="title", hover_data=['title','likes','views','description'], range_x=[-1,20], 
-              title = 'Suivi général du nombre de Likes', log_y=True, height=800, width = 1200, labels={'title':'Projet', 'likes':"Number of Likes"}, markers = True, category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
+              title = 'Suivi général du nombre de Likes', log_y=True, height=600, width = 900, labels={'title':'Projet', 'likes':"Number of Likes"}, markers = True, category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
     st.write(fig)
 
                     
@@ -155,32 +155,32 @@ with col14:
                     
                     
                     
-col3, col_vide, col4 = st.columns([10,2,5])
+#col3, col_vide, col4 = st.columns([10,2,5])
 
-with col3:
+#with col3:
 
-    comparatifs = data_today.sort_values(by=['likes'], ascending = False).iloc[[0,9,19,49,99,(classement[classement['title']=='PLENUMI (22)'].index[0])]]['title']
-    data_special_Plenum_Chart = data[(data['title'].isin(comparatifs))]
-    data_special_Plenum_Chart['Autre'] = data_special_Plenum_Chart['title'].apply(lambda x: 'PLENUMI' if x == 'PLENUMI (22)' else 'Other')
-    rankings = []
-    for entreprise in data_special_Plenum_Chart['title']:
-      rankings.append(('Top '+str(classement[classement['title']==entreprise].index[0]+1)))
-    data_special_Plenum_Chart['rankings']=rankings
-    fig_Plenumi = px.line(data_special_Plenum_Chart.sort_values(by=['likes'], ascending = False), x="date", y="likes", symbol = 'rankings' ,color="Autre", hover_data=['title','likes','views','description'], range_x=[-1,20], 
-              title = 'Classement de Likes - Plenumi VS les autres', log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_sequence=['#A9A9A9','#5F9EA0'], 
-                         category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
-    st.write(fig_Plenumi)
+    #comparatifs = data_today.sort_values(by=['likes'], ascending = False).iloc[[0,9,19,49,99,(classement[classement['title']=='PLENUMI (22)'].index[0])]]['title']
+    #data_special_Plenum_Chart = data[(data['title'].isin(comparatifs))]
+    #data_special_Plenum_Chart['Autre'] = data_special_Plenum_Chart['title'].apply(lambda x: 'PLENUMI' if x == 'PLENUMI (22)' else 'Other')
+    #rankings = []
+    #for entreprise in data_special_Plenum_Chart['title']:
+      #rankings.append(('Top '+str(classement[classement['title']==entreprise].index[0]+1)))
+    #data_special_Plenum_Chart['rankings']=rankings
+    #fig_Plenumi = px.line(data_special_Plenum_Chart.sort_values(by=['likes'], ascending = False), x="date", y="likes", symbol = 'rankings' ,color="Autre", hover_data=['title','likes','views','description'], range_x=[-1,20], 
+             # title = 'Classement de Likes - Plenumi VS les autres', log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_sequence=['#A9A9A9','#5F9EA0'], 
+                        # category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
+   # st.write(fig_Plenumi)
     
 
-with col4:
-    st.markdown("### Classement Général")
-    st.write(top_50.reset_index(drop=True))
+#with col4:
+  #  st.markdown("### Classement Général")
+ #   st.write(top_50.reset_index(drop=True))
    
 
-st.markdown("### Details")
-fig = px.line(data.sort_values(by=['likes'], ascending = False), x="date", y="likes", color="title", hover_data=['title','likes','views','description'], range_x=[-1,20], 
-              title = 'Suivi général du nombre de Likes', log_y=True, height=600, width = 900, labels={'title':'Projet', 'likes':"Number of Likes"}, markers = True, category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
-st.write(fig)
+#st.markdown("### Details")
+#fig = px.line(data.sort_values(by=['likes'], ascending = False), x="date", y="likes", color="title", hover_data=['title','likes','views','description'], range_x=[-1,20], 
+      #        title = 'Suivi général du nombre de Likes', log_y=True, height=600, width = 900, labels={'title':'Projet', 'likes':"Number of Likes"}, markers = True, category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
+#st.write(fig)
     
 
 # streamlit run /Users/nicolasjulien/.spyder-py3/Dashboard_Moovjee.py
