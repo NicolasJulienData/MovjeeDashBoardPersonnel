@@ -101,7 +101,8 @@ histo_classement = []
 for date in data['date'].unique():
     data_jour = data[data['date'] == date]
     classement_jour = data_jour.sort_values(by=['likes'], ascending = False)[['title', 'likes','views']].reset_index()
-    histo_classement.append(int(classement_jour[classement_jour['title']==projet].index[0]))   
+    histo_classement.append(int(classement_jour[classement_jour['title']==projet].index[0]))
+top_10_likes = int(data_today.sort_values(by=['likes'], ascending = False).iloc[10]['likes'])
              
 col8, col9 = st.columns([1,3])
 
@@ -112,9 +113,10 @@ with col8:
     if diff_hier >= 0:
         st.write("(+",diff_hier," places gagnées par rapport à hier)")
     else:
-        st.write(-diff_hier," places perdues par rapport à hier)")
+        st.write(-diff_hier," places perdues par rapport à hier")
     st.markdown("#### Nombre de likes:")
     st.write(int(classement_projet['likes']))
+    st.write(top_10_likes-int(classement_projet['likes'])," likes manquants pour être qualifié)
     st.markdown("#### Nombre de vues:")
     st.write(int(classement_projet['views']))
 
@@ -144,7 +146,6 @@ with col13:
     st.write(top_data.reset_index(drop=True))
   
 with col14:
-    st.wrtie(top)
     fig = px.line(data.sort_values(by=['likes'], ascending = False).iloc[0:top+1], x="date", y="likes", color="title", hover_data=['title','likes','views','description'], range_x=[-1,20], 
               title = 'Suivi général du nombre de Likes', log_y=True, height=800, width = 1200, labels={'title':'Projet', 'likes':"Number of Likes"}, markers = True, category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
     st.write(fig)
