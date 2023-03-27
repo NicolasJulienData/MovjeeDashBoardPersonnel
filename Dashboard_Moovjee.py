@@ -139,11 +139,12 @@ with col11:
     
 col13, col14 = st.columns([3,1])
 with col13:
-    top = data_today.sort_values(by=['likes'], ascending = False)[['title', 'likes']][0:top+1]
+    top_data = data_today.sort_values(by=['likes'], ascending = False)[['title', 'likes']][0:top+1]
     st.markdown("**Classement Général**")
-    st.write(top.reset_index(drop=True))
+    st.write(top_data.reset_index(drop=True))
   
 with col14:
+    st.wrtie(top)
     fig = px.line(data.sort_values(by=['likes'], ascending = False).iloc[0:top+1], x="date", y="likes", color="title", hover_data=['title','likes','views','description'], range_x=[-1,20], 
               title = 'Suivi général du nombre de Likes', log_y=True, height=800, width = 1200, labels={'title':'Projet', 'likes':"Number of Likes"}, markers = True, category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
     st.write(fig)
