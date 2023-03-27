@@ -137,7 +137,7 @@ with col9:
 col10, col11, col12 = st.columns(3)
 with col11:
     st.markdown("### - Suivre mon projet -") 
-    top = st.slider("Afficher le Top...", min_value=0, max_value=190, value=50, 
+    top = st.slider("Afficher le Top...", min_value=0, max_value=190, value=50) 
     
 col13, col14 = st.columns([3,1])
 with col13:
