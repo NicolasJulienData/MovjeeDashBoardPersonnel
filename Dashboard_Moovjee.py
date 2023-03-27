@@ -147,7 +147,7 @@ with col13:
   
 with col14:
     data_graph = data.sort_values(by=['likes'], ascending = False)
-    data_graph = data_graph[data_graph['title'] in top_data['title']]
+    data_graph = data_graph[np.isin(data_graph['title'],top_data['title'])]
     fig = px.line(data_graph, x="date", y="likes", color="title", hover_data=['title','likes','views','description'], range_x=[-1,20], 
               title = 'Suivi général du nombre de Likes', log_y=True, height=650, width = 1050, labels={'title':'Projet', 'likes':"Number of Likes"}, markers = True, category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
     st.write(fig)
