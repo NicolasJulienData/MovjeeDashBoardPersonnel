@@ -93,7 +93,6 @@ projet = 'PLENUMI (22)'
 col5, col6, col7 = st.columns(3)
 with col6:
     st.markdown("### - Suivre mon projet -") 
-    st.write(int(np.where(np.sort(data['title'].unique())=='PLENUMI (22)')[0]))
     projet = st.selectbox('Nom du projet:', np.sort(data['title'].unique()), index=int(np.where(np.sort(data['title'].unique())=='PLENUMI (22)')[0]))
     
 classement_projet = classement[classement['title']==projet]
