@@ -119,6 +119,7 @@ with col8:
     else:
         st.write(-diff_hier," places perdues par rapport à hier")
     st.markdown("#### Nombre de likes:")
+    st.write((classement_projet['likes']))
     st.write(int(classement_projet['likes']))
     delta_likes = top_15_likes-int(classement_projet['likes'])
     if delta_likes > 0:
