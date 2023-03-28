@@ -121,13 +121,13 @@ with col8:
     st.markdown("#### Nombre de likes:")
     if len(classement_projet['likes']) != 0 :
         st.write(int(classement_projet['likes']))
-    delta_likes = top_15_likes-int(classement_projet['likes'])
-    if delta_likes > 0:
-        st.write(delta_likes," likes manquants pour être qualifié")
-    else:
-        st.write(-delta_likes," likes d'avance pour rester qualifié")
-    st.markdown("#### Nombre de vues:")
-    st.write(int(classement_projet['views']))
+        delta_likes = top_15_likes-int(classement_projet['likes'])
+        if delta_likes > 0:
+            st.write(delta_likes," likes manquants pour être qualifié")
+        else:
+            st.write(-delta_likes," likes d'avance pour rester qualifié")
+        st.markdown("#### Nombre de vues:")
+        st.write(int(classement_projet['views']))
 
 with col9:
     comparatifs = data_today.sort_values(by=['likes'], ascending = False).iloc[[0,14,24,49,99,(classement[classement['title']==projet].index[0])]]['title']
