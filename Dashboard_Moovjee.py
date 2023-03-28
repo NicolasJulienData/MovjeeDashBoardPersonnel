@@ -130,7 +130,7 @@ with col9:
     top_15 = data_today.sort_values(by=['likes'], ascending = False).iloc[14]['title']
     data_special_projet_Chart = data[(data['title'].isin(comparatifs))]
     data_special_projet_Chart['Informations'] = data_special_projet_Chart['title'].apply(lambda x: x[:-5] if x == projet else ('Premier admis' if x == top_15 else ''))
-    data_special_projet_Chart['Color'] = data_special_projet_Chart['title'].apply(lambda x: '#A9A9A9' if x == projet else ('#9ACD32' if x == top_15 else '#5F9EA0'))
+    data_special_projet_Chart['Color'] = data_special_projet_Chart['title'].apply(lambda x: '#5F9EA0' if x == projet else ('#A9A9A9' if x == top_15 else '#9ACD32'))
     ordre_colors = data_special_projet_Chart['Color'].unique()
     rankings = []
     for entreprise in data_special_projet_Chart['title']:
