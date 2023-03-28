@@ -48,10 +48,10 @@ data = pd.read_csv("output_final.csv")
 data = data.dropna()
 
 today = datetime.now().strftime("%m-%d")
-st.write(today in data['date'])
+st.write(today in np.array(data['date']))
 st.write(type(today))
 st.write(type(data['date']))
-st.write(np.isin(today,data['date']))
+st.write(np.isin(today,np.array(data['date'])))
 
 if today not in data['date']:
     today = (datetime.now() - timedelta(days = 1)).strftime("%m-%d")
