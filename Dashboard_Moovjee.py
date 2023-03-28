@@ -87,7 +87,8 @@ with col4:
     st.markdown("*Pourquoi ce Dashboard ?* - Nous te partageons ce Dashboard afin de te montrer que **les données peuvent aider à gagner en motivation et encourager la mise en action**. 💪 Nous pensons que pouvoir analyser et comparer les performances des projets aidera la communauté Moovjee à se mobiliser et permettra de faire grandir l'engouement autour du concours 🚀. Mais nous pensons également que **se servir des données pour générer un impact positif** est possible dans pleins d'autres cadres, notamment celui de **l'éducation**, afin de motiver non pas des porteurs de projets mais des élèves 🎓.")
     st.markdown("*C'est quoi Plenumi ?* - **Plenumi** est une plateforme de révisions en ligne qui utilise les différentes avancées en innovation pédagogique ainsi qu’en *data science* pour **fournir un suivi personnalisé et qualitatif à chaque élève**💡.  En centralisant le travail et les données de l’élève, il est possible d’activer des **leviers de progression**, lui permettant d'avoir un apprentissage **pertinent, ludique et motivant**📚.")
     st.markdown("**Suivre le projet :** https://plenumi.fr")
-    st.markdown("**Nous contacter :** contact@plenumi.fr")           
+    st.markdown("**Nous contacter :** contact@plenumi.fr")
+    st.markdown("**Soutiens nous et va liker notre vidéo Youtue :** https://www.youtube.com/watch?v=O5xTOPv5Dr0")
 
 projet = 'PLENUMI (22)'
 col5, col6, col7 = st.columns(3)
@@ -102,7 +103,7 @@ for date in data['date'].unique():
     data_jour = data[data['date'] == date]
     classement_jour = data_jour.sort_values(by=['likes'], ascending = False)[['title', 'likes','views']].reset_index()
     histo_classement.append(int(classement_jour[classement_jour['title']==projet].index[0]))
-top_10_likes = int(data_today.sort_values(by=['likes'], ascending = False).iloc[10]['likes'])
+top_15_likes = int(data_today.sort_values(by=['likes'], ascending = False).iloc[14]['likes'])
              
 col8, col9 = st.columns([1,3])
 
@@ -116,20 +117,21 @@ with col8:
         st.write(-diff_hier," places perdues par rapport à hier")
     st.markdown("#### Nombre de likes:")
     st.write(int(classement_projet['likes']))
-    st.write(top_10_likes-int(classement_projet['likes'])," likes manquants pour être qualifié")
+    st.write(top_15_likes-int(classement_projet['likes'])," likes manquants pour être qualifié")
     st.markdown("#### Nombre de vues:")
     st.write(int(classement_projet['views']))
 
 with col9:
-    comparatifs = data_today.sort_values(by=['likes'], ascending = False).iloc[[0,9,19,49,99,(classement[classement['title']==projet].index[0])]]['title']
+    comparatifs = data_today.sort_values(by=['likes'], ascending = False).iloc[[0,14,24,49,99,(classement[classement['title']==projet].index[0])]]['title']
+    top_15 = comparatifs['title'].iloc[14]
     data_special_projet_Chart = data[(data['title'].isin(comparatifs))]
-    data_special_projet_Chart['Autre'] = data_special_projet_Chart['title'].apply(lambda x: x[:-5] if x == projet else 'Other')
+    data_special_projet_Chart['Informations'] = data_special_projet_Chart['title'].apply(lambda x: x[:-5] if x == projet else ('Premier admis' if x == top_15 else ''))
     rankings = []
     for entreprise in data_special_projet_Chart['title']:
       rankings.append(('Top '+str(classement[classement['title']==entreprise].index[0]+1)))
     data_special_projet_Chart['rankings']=rankings
-    fig_projet = px.line(data_special_projet_Chart.sort_values(by=['likes'], ascending = False), x="date", y="likes", symbol = 'rankings' ,color="Autre", hover_data=['title','likes','views','description'], range_x=[-1,20], 
-              title = 'Classement de Likes - {} VS les autres'.format(projet), log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_sequence=['#A9A9A9','#5F9EA0'], 
+    fig_projet = px.line(data_special_projet_Chart.sort_values(by=['likes'], ascending = False), x="date", y="likes", symbol = 'rankings' ,color="Informations", hover_data=['title','likes','views','description'], range_x=[-1,20], 
+              title = 'Classement de Likes - {} VS les autres'.format(projet), log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_sequence=['#A9A9A9','#00FF00','#5F9EA0'], 
                          category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
     st.write(fig_projet)
 
@@ -143,7 +145,7 @@ col13, col14 = st.columns([1,3])
 with col13:
     top_data = data_today.sort_values(by=['likes'], ascending = False)[['title', 'likes']][0:top+1]
     st.markdown("**Classement Général**")
-    st.write(top_data.reset_index(drop=True))
+    st.write(top_data.reset_index(drop=True).reindex(range(len(top_data)+1)[1:])
   
 with col14:
     data_graph = data.sort_values(by=['likes'], ascending = False)
