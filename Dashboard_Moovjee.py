@@ -151,7 +151,8 @@ with col13:
     st.markdown("**Classement Général**")
     classement_general = top_data.reset_index(drop=True)
     classement_general['classement']= range(len(top_data)+1)[1:]
-    st.write(classement_general.set_index('classement', inplace = True))
+    st.write(classement_general)
+    st.write(classement_general.set_index('classement'))
   
 with col14:
     data_graph = data.sort_values(by=['likes'], ascending = False)
