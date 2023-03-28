@@ -147,7 +147,7 @@ with col8:
 col10, col11, col12 = st.columns(3)
 with col11:
     st.markdown("### - Classement Général -") 
-    top = st.slider("Afficher le Top...", min_value=0, max_value=190, value=50) 
+    top = st.slider("Afficher le Top...", min_value=0, max_value=190, value=15) 
     
 col13, col14 = st.columns([1,3])
 with col13:
