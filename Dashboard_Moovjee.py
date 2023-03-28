@@ -109,7 +109,7 @@ col8, col9 = st.columns([1,3])
 
 with col8:
     st.markdown("#### Classement:")
-    st.write(classement_projet.index[0], " /190")
+    st.write((classement_projet.index[0]+1), " /190")
     diff_hier = histo_classement[-2]-histo_classement[-1]
     if diff_hier >= 0:
         st.write("(+",diff_hier," places gagnées par rapport à hier)")
@@ -123,8 +123,7 @@ with col8:
 
 with col9:
     comparatifs = data_today.sort_values(by=['likes'], ascending = False).iloc[[0,14,24,49,99,(classement[classement['title']==projet].index[0])]]['title']
-    st.write(comparatifs)
-    top_15 = comparatifs['title'].iloc[14]
+    top_15 = data_today.sort_values(by=['likes'], ascending = False).iloc[14]['title']
     data_special_projet_Chart = data[(data['title'].isin(comparatifs))]
     data_special_projet_Chart['Informations'] = data_special_projet_Chart['title'].apply(lambda x: x[:-5] if x == projet else ('Premier admis' if x == top_15 else ''))
     rankings = []
