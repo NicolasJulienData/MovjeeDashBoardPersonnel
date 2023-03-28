@@ -117,7 +117,11 @@ with col8:
         st.write(-diff_hier," places perdues par rapport à hier")
     st.markdown("#### Nombre de likes:")
     st.write(int(classement_projet['likes']))
-    st.write(top_15_likes-int(classement_projet['likes'])," likes manquants pour être qualifié")
+    delta_likes = top_15_likes-int(classement_projet['likes'])
+    if delta_likes > 0:
+        st.write(delta_likes," likes manquants pour être qualifié")
+    else:
+        st.write(-delta_likes," likes d'avance pour rester qualifié")
     st.markdown("#### Nombre de vues:")
     st.write(int(classement_projet['views']))
 
@@ -126,12 +130,14 @@ with col9:
     top_15 = data_today.sort_values(by=['likes'], ascending = False).iloc[14]['title']
     data_special_projet_Chart = data[(data['title'].isin(comparatifs))]
     data_special_projet_Chart['Informations'] = data_special_projet_Chart['title'].apply(lambda x: x[:-5] if x == projet else ('Premier admis' if x == top_15 else ''))
+    data_special_projet_Chart['Color'] = data_special_projet_Chart['title'].apply(lambda x: '#A9A9A9' if x == projet else ('#9ACD32' if x == top_15 else '#5F9EA0'))
+    ordre_colors = data_special_projet_Chart['Color'].unique()
     rankings = []
     for entreprise in data_special_projet_Chart['title']:
       rankings.append(('Top '+str(classement[classement['title']==entreprise].index[0]+1)))
     data_special_projet_Chart['rankings']=rankings
     fig_projet = px.line(data_special_projet_Chart.sort_values(by=['likes'], ascending = False), x="date", y="likes", symbol = 'rankings' ,color="Informations", hover_data=['title','likes','views','description'], range_x=[-1,20], 
-              title = 'Classement de Likes - {} VS les autres'.format(projet), log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_sequence=['#A9A9A9','#00FF00','#5F9EA0'], 
+              title = 'Classement de Likes - {} VS les autres'.format(projet), log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_sequence=ordre_colors, 
                          category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
     st.write(fig_projet)
 
