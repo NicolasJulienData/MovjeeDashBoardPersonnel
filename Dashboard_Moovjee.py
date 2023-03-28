@@ -151,7 +151,7 @@ with col13:
     st.markdown("**Classement Général**")
     classement_general = top_data.reset_index(drop=True)
     classement_general['Classement']= range(len(top_data)+1)[1:]
-    classement_general.rename(columns={"title": "Projet"})
+    classement_general = classement_general.rename(columns={"title": "Projet"})
     st.write(classement_general.set_index('Classement'))
   
 with col14:
