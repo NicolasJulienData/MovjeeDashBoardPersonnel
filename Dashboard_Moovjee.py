@@ -111,7 +111,8 @@ col8, col9 = st.columns([1,3])
 
 with col8:
     st.markdown("#### Classement:")
-    st.write((classement_projet.index[0]+1), " /190")
+    if classement_projet.index != None:
+        st.write((classement_projet.index[0]+1), " /190")
     diff_hier = histo_classement[-2]-histo_classement[-1]
     if diff_hier >= 0:
         st.write("(+",diff_hier," places gagnées par rapport à hier)")
