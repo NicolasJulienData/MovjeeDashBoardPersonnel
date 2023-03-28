@@ -89,7 +89,7 @@ with col4:
     st.markdown("*C'est quoi Plenumi ?* - **Plenumi** est une plateforme de révisions en ligne qui utilise les différentes avancées en innovation pédagogique ainsi qu’en *data science* pour **fournir un suivi personnalisé et qualitatif à chaque élève**💡.  En centralisant le travail et les données de l’élève, il est possible d’activer des **leviers de progression**, lui permettant d'avoir un apprentissage **pertinent, ludique et motivant**📚.")
     st.markdown("**Suivre le projet :** https://plenumi.fr")
     st.markdown("**Nous contacter :** contact@plenumi.fr")
-    st.markdown("**Soutiens nous et va liker notre vidéo Youtue :** https://www.youtube.com/watch?v=O5xTOPv5Dr0")
+    st.markdown("**Soutiens nous et va liker notre vidéo Youtube :** https://www.youtube.com/watch?v=O5xTOPv5Dr0")
 
 projet = 'PLENUMI (22)'
 col5, col6, col7 = st.columns(3)
