@@ -145,7 +145,7 @@ col13, col14 = st.columns([1,3])
 with col13:
     top_data = data_today.sort_values(by=['likes'], ascending = False)[['title', 'likes']][0:top+1]
     st.markdown("**Classement Général**")
-    st.write(top_data.reset_index(drop=True).reindex(range(len(top_data)+1)[1:])
+    st.write(top_data.reset_index(drop=True).reindex(range(len(top_data)+1)[1:]))
   
 with col14:
     data_graph = data.sort_values(by=['likes'], ascending = False)
