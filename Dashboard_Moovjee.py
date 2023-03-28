@@ -123,6 +123,7 @@ with col8:
 
 with col9:
     comparatifs = data_today.sort_values(by=['likes'], ascending = False).iloc[[0,14,24,49,99,(classement[classement['title']==projet].index[0])]]['title']
+    st.write(comparatifs)
     top_15 = comparatifs['title'].iloc[14]
     data_special_projet_Chart = data[(data['title'].isin(comparatifs))]
     data_special_projet_Chart['Informations'] = data_special_projet_Chart['title'].apply(lambda x: x[:-5] if x == projet else ('Premier admis' if x == top_15 else ''))
