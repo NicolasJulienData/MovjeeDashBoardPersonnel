@@ -48,11 +48,10 @@ data = pd.read_csv("output_final.csv")
 data = data.dropna()
 
 today = datetime.now().strftime("%m-%d")
+st.write(data)
 if today not in data['date']:
     today = (datetime.now() - timedelta(days = 1)).strftime("%m-%d")
-st.write(today)
-st.write(datetime.now().strftime("%m-%d"))
-    
+
 data_today = data[data['date'] == today]
 data_Plenumi = data[data['title'] == 'PLENUMI (22)']
 top_50 = data_today.sort_values(by=['likes'], ascending = False)[['title', 'likes']][0:50]
@@ -111,8 +110,6 @@ top_15_likes = int(data_today.sort_values(by=['likes'], ascending = False).iloc[
 col8, col9 = st.columns([1,3])
 
 with col8:
-    st.write(histo_classement)
-    st.write(classement)
     st.markdown("#### Classement:")
     st.write((classement_projet.index[0]+1), " /190")
     diff_hier = histo_classement[-2]-histo_classement[-1]
