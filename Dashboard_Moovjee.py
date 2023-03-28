@@ -61,7 +61,7 @@ col1, col2 = st.columns([1,6])
 with col2:
     st.markdown("### A propos de ce Dashboard : ###")
     st.markdown("Bienvenue à toi sur ce Dashboard de suivi du classement du **prix 100 jours de Moovjee** 🏆. Que tu sois porteur de projet, soutien actif ou simple curieux, ce Dashboard te permettra de suivre les performances des projets qui t'intéressent. 📊")
-    st.markdown("⚠️ Attention : Les données sont actualisées **manuellement** tous les jours à 12h 🕛, par conséquent les **performances affichées ne sont pas les performances en temps réel**. Pour toute suggestion, remarque, problème, question, n'hésite pas à me contacter : nicolas.julien@essec.edu")
+    st.markdown("⚠️ Attention : Les données sont actualisées **manuellement** tous les jours à 12h 🕛, par conséquent les **performances affichées ne sont pas les performances en temps réel**. Le dashboard n'est pas supporté par Safari 🧭❌. Pour toute suggestion, remarque, problème, question, n'hésite pas à me contacter : nicolas.julien@essec.edu")
 with col1:
     from streamlit_lottie import st_lottie
     from streamlit_lottie import st_lottie_spinner
