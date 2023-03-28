@@ -50,6 +50,8 @@ data = data.dropna()
 today = datetime.now().strftime("%m-%d")
 if today not in data['date']:
     today = (datetime.now() - timedelta(days = 1)).strftime("%m-%d")
+st.write(today)
+st.write(datetime.now().strftime("%m-%d"))
     
 data_today = data[data['date'] == today]
 data_Plenumi = data[data['title'] == 'PLENUMI (22)']
