@@ -109,6 +109,8 @@ top_15_likes = int(data_today.sort_values(by=['likes'], ascending = False).iloc[
 col8, col9 = st.columns([1,3])
 
 with col8:
+    st.write(histo_classement)
+    st.write(classement)
     st.markdown("#### Classement:")
     st.write((classement_projet.index[0]+1), " /190")
     diff_hier = histo_classement[-2]-histo_classement[-1]
