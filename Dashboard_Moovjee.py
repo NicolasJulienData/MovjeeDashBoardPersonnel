@@ -129,19 +129,19 @@ with col8:
         st.markdown("#### Nombre de vues:")
         st.write(int(classement_projet['views']))
 
-with col9:
-    comparatifs = data_today.sort_values(by=['likes'], ascending = False).iloc[[0,14,24,49,99,(classement[classement['title']==projet].index[0])]]['title']
-    top_15 = data_today.sort_values(by=['likes'], ascending = False).iloc[14]['title']
-    data_special_projet_Chart = data[(data['title'].isin(comparatifs))]
-    data_special_projet_Chart['Informations'] = data_special_projet_Chart['title'].apply(lambda x: x[:-5] if x == projet else ('Premier admis' if x == top_15 else ''))
-    rankings = []
-    for entreprise in data_special_projet_Chart['title']:
-      rankings.append(('Top '+str(classement[classement['title']==entreprise].index[0]+1)))
-    data_special_projet_Chart['rankings']=rankings
-    fig_projet = px.line(data_special_projet_Chart.sort_values(by=['likes'], ascending = False), x="date", y="likes", symbol = 'rankings' ,color="Informations", hover_data=['title','likes','views','description'], range_x=[-1,20], 
-              title = 'Classement de Likes - {} VS les autres'.format(projet), log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_map = {projet[:-5]:'#5F9EA0','Premier admis':'#9ACD32','':'#A9A9A9'}, 
-                         category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
-    st.write(fig_projet)
+    with col9:
+        comparatifs = data_today.sort_values(by=['likes'], ascending = False).iloc[[0,14,24,49,99,(classement[classement['title']==projet].index[0])]]['title']
+        top_15 = data_today.sort_values(by=['likes'], ascending = False).iloc[14]['title']
+        data_special_projet_Chart = data[(data['title'].isin(comparatifs))]
+        data_special_projet_Chart['Informations'] = data_special_projet_Chart['title'].apply(lambda x: x[:-5] if x == projet else ('Premier admis' if x == top_15 else ''))
+        rankings = []
+        for entreprise in data_special_projet_Chart['title']:
+          rankings.append(('Top '+str(classement[classement['title']==entreprise].index[0]+1)))
+        data_special_projet_Chart['rankings']=rankings
+        fig_projet = px.line(data_special_projet_Chart.sort_values(by=['likes'], ascending = False), x="date", y="likes", symbol = 'rankings' ,color="Informations", hover_data=['title','likes','views','description'], range_x=[-1,20], 
+                  title = 'Classement de Likes - {} VS les autres'.format(projet), log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_map = {projet[:-5]:'#5F9EA0','Premier admis':'#9ACD32','':'#A9A9A9'}, 
+                             category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
+        st.write(fig_projet)
 
     
 col10, col11, col12 = st.columns(3)
