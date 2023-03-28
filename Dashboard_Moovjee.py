@@ -132,6 +132,7 @@ with col9:
     data_special_projet_Chart['Informations'] = data_special_projet_Chart['title'].apply(lambda x: x[:-5] if x == projet else ('Premier admis' if x == top_15 else ''))
     data_special_projet_Chart['Color'] = data_special_projet_Chart['title'].apply(lambda x: '#5F9EA0' if x == projet else ('#A9A9A9' if x == top_15 else '#9ACD32'))
     ordre_colors = data_special_projet_Chart['Color'].unique()
+    st.write(data_special_projet_Chart, ordre_colors)
     rankings = []
     for entreprise in data_special_projet_Chart['title']:
       rankings.append(('Top '+str(classement[classement['title']==entreprise].index[0]+1)))
