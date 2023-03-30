@@ -138,11 +138,10 @@ with col8:
         for entreprise in data_special_projet_Chart['title']:
           rankings.append(('Top '+str(classement[classement['title']==entreprise].index[0]+1)))
         data_special_projet_Chart['rankings']=rankings
-        fig_projet = px.line(data_special_projet_Chart.sort_values(by=['likes'], ascending = False), x="date", y="likes", symbol = 'rankings' ,color="Informations", hover_data=['title','likes','views','description'], range_x=[-1,20], 
+        fig_projet = px.line(data_special_projet_Chart.sort_values(by=['likes'], ascending = False), x="date", y="likes", symbol = 'rankings' ,color="Informations", hover_data=['title','likes','views','description'], range_x=[-1,15], 
                   title = 'Classement de Likes - {} VS les autres'.format(projet), log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_map = {projet[:-5]:'#5F9EA0','Premier admis':'#9ACD32','':'#A9A9A9'}, 
                              category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
-        st.write(fig_projet)
-
+        st.write(fig_projet)   
     
 col10, col11, col12 = st.columns(3)
 with col11:
@@ -161,8 +160,8 @@ with col13:
 with col14:
     data_graph = data.sort_values(by=['likes'], ascending = False)
     data_graph = data_graph[np.isin(data_graph['title'],top_data['title'])]
-    fig = px.line(data_graph, x="date", y="likes", color="title", hover_data=['title','likes','views','description'], range_x=[-1,20], 
-              title = 'Suivi général du nombre de Likes', log_y=True, height=650, width = 1050, labels={'title':'Projet', 'likes':"Number of Likes"}, markers = True, category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
+    fig = px.line(data_graph, x="date", y="likes", color="title", hover_data=['title','likes','views','description'], range_x=[-1,15], 
+              title = 'Suivi général du nombre de Likes', log_y=st.button("Échelle Logarithmique"), height=650, width = 1050, labels={'title':'Projet', 'likes':"Number of Likes"}, markers = True, category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
     st.write(fig)
 
                     
