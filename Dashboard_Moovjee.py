@@ -139,7 +139,7 @@ with col8:
           rankings.append(('Top '+str(classement[classement['title']==entreprise].index[0]+1)))
         data_special_projet_Chart['rankings']=rankings
         fig_projet = px.line(data_special_projet_Chart.sort_values(by=['likes'], ascending = False), x="date", y="likes", symbol = 'rankings' ,color="Informations", hover_data=['title','likes','views','description'], range_x=[-1,15], 
-                  title = 'Classement de Likes - {} VS les autres'.format(projet), log_y=False, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_map = {projet[:-5]:'#5F9EA0','Premier admis':'#9ACD32','':'#A9A9A9'}, 
+                  title = 'Classement de Likes - {} VS les autres'.format(projet), log_y=True, height=500, width = 800, labels={'title':'Projet', 'likes':"Number of Likes"}, color_discrete_map = {projet[:-5]:'#5F9EA0','Premier admis':'#9ACD32','':'#A9A9A9'}, 
                              category_orders={'date':data.sort_values(by=['date'], ascending = True)['date']})
         st.write(fig_projet)   
     
