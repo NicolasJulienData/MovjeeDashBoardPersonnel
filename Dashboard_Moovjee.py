@@ -33,7 +33,7 @@ st.set_page_config(
 
 st.title("Concours Prix Moovjee 100 Jours - Suivi du classement     (Réalisé par @Plenumi)")
 
-url = "https://drive.google.com/file/d/1-FuA4hHpyvghqeF2r0sBhJDJSwwWepvM/view?usp=sharing"
+url = "https://drive.google.com/file/d/1SuEhd6Rqmm5EJM3qxkUamcfyR08JQozd/view?usp=sharing"
 path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
 
 import urllib.request
@@ -42,9 +42,9 @@ from io import StringIO
 import pandas as pd
 import requests
 
-# storage_options = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
-# pd.read_csv(path, storage_options=storage_options)
-data = pd.read_csv("output_final.csv")
+storage_options = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
+pd.read_csv(path, storage_options=storage_options)
+# data = pd.read_csv("output_final.csv")
 data = data.dropna()
 
 today = datetime.now().strftime("%m-%d")
