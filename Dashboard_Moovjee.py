@@ -33,7 +33,7 @@ st.set_page_config(
 
 st.title("Concours Prix Moovjee 100 Jours - Suivi du classement     (Réalisé par @Plenumi)")
 
-url = "https://drive.google.com/file/d/1SuEhd6Rqmm5EJM3qxkUamcfyR08JQozd/view?usp=sharing"
+url = "https://drive.google.com/file/d/15H-LUJ0KgsrlbW6KqEVPftgzstOGGqZv/view?usp=sharing"
 path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
 
 import urllib.request
